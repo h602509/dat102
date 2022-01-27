@@ -136,17 +136,7 @@ public abstract class StabelADTTest {
 		}
 	}
 
-	/**
-	 * Test på størrelsen
-	 */
-	@Test
-	public void stor() {
-		stabel.push(e0);
-		stabel.push(e1);
-		stabel.push(e2);
-		assertEquals(3, stabel.antall());
-	}
-
+	
 	/**
 	 * Forsøk på pop av en tom stabel skal gi "underflow excepton" *
 	 * 

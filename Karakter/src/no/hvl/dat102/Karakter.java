@@ -5,7 +5,7 @@ package no.hvl.dat102;
  */
 public class Karakter {
 
-	// Beregn karakter
+	//  Beregn karakter
 	// Poengsum mellom 0 and 100 (inklusive)
 	public static char beregnKarakter(int poeng) throws FeilKarakterException {
 		char kar;

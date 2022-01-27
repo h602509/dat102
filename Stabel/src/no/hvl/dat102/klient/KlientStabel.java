@@ -1,6 +1,8 @@
 package no.hvl.dat102.klient;
 
-import no.hvl.dat102.EmptyCollectionException;
+import no.hvl.dat102.adt.StabelADT;
+import no.hvl.dat102.exception.EmptyCollectionException;
+import no.hvl.dat102.kjedet.KjedetStabel;
 import no.hvl.dat102.tabell.TabellStabel;
 
 public class KlientStabel {
@@ -8,7 +10,7 @@ public class KlientStabel {
 
 		String str = "netsket re etteD";
 		int lengde = str.length();
-		TabellStabel<Character> tegnStabel = new TabellStabel<Character>();
+		StabelADT<Character> tegnStabel = new KjedetStabel<Character>();
 		for (int i = 0; i < lengde; i++) {
 			tegnStabel.push((str.charAt(i)));
 		}

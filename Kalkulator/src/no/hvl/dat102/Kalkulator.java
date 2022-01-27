@@ -1,6 +1,7 @@
 package no.hvl.dat102;
 
 public class Kalkulator {
+	//Kalkulator
 
 	public static int add(int tall1, int tall2) {
 		return tall1 + tall2;
