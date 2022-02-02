@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import no.hvl.dat102.adt.KoeADT;
 import no.hvl.dat102.kjedet.KjedetKoe;
 
-public class KoeAdtTest {
+public class KoeLNTest {
 
 	private KoeADT<Integer> koe;
 	
@@ -91,7 +91,7 @@ public class KoeAdtTest {
 		}
 		
 		assertTrue(foersteFeiler);
+		
 	}
 	
 }
-
