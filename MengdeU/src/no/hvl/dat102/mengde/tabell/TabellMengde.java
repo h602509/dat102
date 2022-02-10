@@ -44,6 +44,13 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			antall++;
 		}
 	}
+	
+	@Override
+	public void leggTilAlle(MengdeADT<T> m2) {
+		Iterator<T> teller = m2.iterator();
+		while (teller.hasNext())
+			leggTil(teller.next());
+	}
 
 	private void utvidKapasitet() {
 		T[] hjelpetabell = (T[]) (new Object[2 * tab.length]);
@@ -70,7 +77,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public T fjern(T element) {
-		//TODO
+	
 		// Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
 
 		if (erTom())
@@ -128,12 +135,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		return likeMengder;
 	}
 
-	@Override
-	public void leggTilAlle(MengdeADT<T> m2) {
-		Iterator<T> teller = m2.oppramser();
-		while (teller.hasNext())
-			leggTil(teller.next());
-	}
+	
 
 	/*
 	 * Denne versjonen av unionen er lite effektiv
@@ -148,7 +150,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		//TODO
+		//TODO - Lage en mer effektiv kode
 		MengdeADT<T> begge = new TabellMengde<T>();
 		T element = null;
 		/*
@@ -191,7 +193,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public Iterator<T> oppramser() {
+	public Iterator<T> iterator() {
 		return new TabellIterator<T>(tab, antall);
 	}
 
@@ -202,5 +204,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		tab[antall] = element;
 		antall++;
 	}
+
+	
 
 }// class

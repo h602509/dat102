@@ -34,9 +34,9 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public void leggTilAlle(MengdeADT<T> m2) {
-		Iterator<T> teller = m2.oppramser();
+		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext()) {
-			leggTil(teller.next());
+			this.leggTil(teller.next());
 		}
 	}
 
@@ -114,7 +114,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return funnet;
 	}
 	/*
-	 * Når vi overkjører (ovverride) equals- meteoden er det anbefalt at vi også
+	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
 	 * overkjører hashcode-metoden da en del biblioteker bruker hascode sammen med
 	 * equals. Vi kommer tilbake til forklaring og bruk av hashcode senere i faget.
 	 */
@@ -130,7 +130,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean equals(Object ny) {
-		// TODO
+
 		if (this == ny) {
 			return true;
 		}
@@ -139,24 +139,22 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		}
 		if (getClass() != ny.getClass()) {
 			return false;
-		} 
-			boolean likeMengder = true;
-			MengdeADT<T> m2 = (KjedetMengde<T>) ny;
-			if (this.antall != m2.antall()) {
-				likeMengder = false;
-			} else {
-				likeMengder = true;
-				Iterator<T> teller = m2.oppramser();
-				while (teller.hasNext() && likeMengder) {
-					T element = teller.next();
-					if (!this.inneholder(element)) {
-						likeMengder = false;
-					}
+		}
+		boolean likeMengder = true;
+		MengdeADT<T> m2 = (KjedetMengde<T>) ny;
+		if (this.antall != m2.antall()) {
+			likeMengder = false;
+		} else {
+			Iterator<T> teller = m2.iterator();
+
+			while (teller.hasNext() && likeMengder) {
+				T element = teller.next();
+				if (!this.inneholder(element)) {
+					likeMengder = false;
 				}
-				return likeMengder;
 			}
-		
-		return false;
+		}
+		return likeMengder;
 	}
 
 	@Override
@@ -171,7 +169,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		// TODO
+		
 		MengdeADT<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
 		T element = null;
@@ -181,7 +179,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			aktuell = aktuell.getNeste();
 		}
 
-		Iterator<T> teller = m2.oppramser();
+		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext()) {
 			element = teller.next();
 			if (!this.inneholder(element)) {// tester mot "konstant" mengde
@@ -227,7 +225,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public Iterator<T> oppramser() {
+	public Iterator<T> iterator() {
 		return new KjedetIterator<T>(start);
 	}
 

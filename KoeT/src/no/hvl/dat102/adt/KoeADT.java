@@ -3,7 +3,7 @@ package no.hvl.dat102.adt;
 import no.hvl.dat102.exceptions.EmptyCollectionException;
 
 public interface KoeADT<T> {
-
+	
 	/**
 	 * Legge til et element bak i køen.
 	 * 

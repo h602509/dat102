@@ -1,4 +1,4 @@
-package no.hv.dat102.mengde.klient;
+package no.hvl.dat102.mengde.klient;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Ordliste {
 
 		MengdeADT<String> ordListe1 = new KjedetMengde<String>();
 
-		String[] ord = { "God", "dag", "Hans", "Hansen", "Hansaby", "Førde","Olsen", "Ole", "buss", "rute", "Bergen" };
+		String[] ord = { "God", "dag", "Hans", "Hansen", "Hansaby", "Foerde","Olsen", "Ole", "buss", "rute", "Bergen" };
 
 		Scanner tastatur = new Scanner(System.in);
 		// Legger til ordene i mengden ordListe1
@@ -24,7 +24,7 @@ public class Ordliste {
 		}
 		MengdeADT<String> ordListe2 = new KjedetMengde<String>();
 
-		System.out.println("Oppgi en streng, avslutt med zzz:");
+		System.out.println("\nOppgi en streng, avslutt med zzz:\n");
 		String streng = tastatur.nextLine();
 		// Leser inn ord
 		while (!streng.equals("zzz")) {
@@ -37,7 +37,7 @@ public class Ordliste {
 			}
 			// Legger innleste ord inn i ordliste2
 			ordListe2.leggTil(streng);
-			System.out.println("Oppgi en streng, avslutt med zzz:");
+			System.out.println("\nOppgi en streng, avslutt med zzz\n");
 			streng = tastatur.nextLine();
 
 		} // while
