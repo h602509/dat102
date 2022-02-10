@@ -15,7 +15,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		//TODO
 		// Kjeding
 		//TODO
-		
+	}
 
 	@Override
 	public void leggTil(T el) {
@@ -55,6 +55,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	 * null-referansen
 	 */
 	private DobbelNode<T> finn(T el) {
+		return null;
 		//TODO
 
 	}
