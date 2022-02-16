@@ -58,15 +58,15 @@ public class Person implements Comparable<Person> {
 			resultat = 1;
 
 		} else {
-			int compareNavn = getEtternavn().compareTo(denAndrePersonen.getEtternavn());
+			resultat = getEtternavn().compareTo(denAndrePersonen.getEtternavn());
 
-			if (compareNavn == 0) {
-				compareNavn = getFornavn().compareTo(denAndrePersonen.getFornavn());
+			if (resultat == 0) {
+				resultat = getFornavn().compareTo(denAndrePersonen.getFornavn());
 
-			} else if (compareNavn < 0) {
+			} else if (resultat < 0) {
 				resultat = -1;
 
-			} else {
+			} else if (resultat > 0) {
 				resultat = 1;
 
 			}
