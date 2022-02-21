@@ -96,30 +96,36 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public void leggTil(T element) {
 
-		LinearNode<T> e = (LinearNode<T>) element;
+		LinearNode<T> ny = new LinearNode<>(element);
 		LinearNode<T> f = null;
-		
+
 		if (antall == 0) {
-			foerste = e;
+			foerste = ny;
 			siste = foerste;
 			antall ++;
 		
 		} else {
 			
 			f = foerste;
-			LinearNode<T> bak = f;
+
 			
-			while (f.getElement().compareTo(element) < 0) {
-				bak = f;
-				f = f.getNeste();
+			for (int i = 0; i < antall && f.getNeste() != null; i++ ) {
+				if (f.getElement().compareTo(element) < 0) {
+				f = f.getNeste();	
+				}
+			}
+				
+			ny.setNeste(f.getNeste());
+			f.setNeste(ny);
+			antall++;
+			
+			if (ny.getNeste() == null) {
+				siste = ny;
+			
 			}
 			
-			e.setNeste(f);
-			bak.setNeste(e);
-			antall++;
 		}
-		
-		
+
 	}
 
 	@Override
