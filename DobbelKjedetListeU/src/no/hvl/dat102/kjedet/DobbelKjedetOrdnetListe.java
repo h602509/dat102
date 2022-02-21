@@ -9,21 +9,20 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	private int antall;
 
 	public DobbelKjedetOrdnetListe(T minVerdi, T maksVerdi) {
-		
+
 //		foerst node:
 		DobbelNode<T> f = new DobbelNode<>(minVerdi);
 		foerste = f;
-		
+
 //		siste node:
 		DobbelNode<T> s = new DobbelNode<>(maksVerdi);
 		siste = s;
-		
-		
+
 		f.setNeste(s);
 		s.setForrige(f);
-		
+
 		antall = 0;
-		
+
 	}
 
 	@Override
@@ -64,8 +63,18 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	 * null-referansen
 	 */
 	private DobbelNode<T> finn(T el) {
+
+		DobbelNode<T> aktuell = new DobbelNode<>();
+		aktuell = foerste;
+
+		for (int i = 0; i < antall - 1; i++) {
+			if (aktuell.getElement().compareTo(el) == 0) {
+				return aktuell;
+			}
+
+			aktuell = aktuell.getNeste();
+		}
 		return null;
-		//TODO
 
 	}
 
