@@ -9,12 +9,21 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	private int antall;
 
 	public DobbelKjedetOrdnetListe(T minVerdi, T maksVerdi) {
-		// Første node
-		//TODO
-		// Siste node
-		//TODO
-		// Kjeding
-		//TODO
+		
+//		foerst node:
+		DobbelNode<T> f = new DobbelNode<>(minVerdi);
+		foerste = f;
+		
+//		siste node:
+		DobbelNode<T> s = new DobbelNode<>(maksVerdi);
+		siste = s;
+		
+		
+		f.setNeste(s);
+		s.setForrige(f);
+		
+		antall = 0;
+		
 	}
 
 	@Override
