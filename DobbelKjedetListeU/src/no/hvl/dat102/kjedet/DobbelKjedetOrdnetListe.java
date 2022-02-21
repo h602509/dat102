@@ -77,7 +77,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 
 	}
 	
-	private boolean fins(T el) {
+	public boolean fins(T el) {
 		if (finn(el) == null) {
 			return false;
 		} else {
@@ -126,7 +126,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		
 		DobbelNode<T> aktuell = foerste;
 		
-		while (aktuell != siste) {
+		while (aktuell != siste.getForrige()) {
 			
 			System.out.println(aktuell.getNeste().getElement());
 			aktuell = aktuell.getNeste();
