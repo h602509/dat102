@@ -64,10 +64,9 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	 */
 	private DobbelNode<T> finn(T el) {
 
-		DobbelNode<T> aktuell = new DobbelNode<>();
-		aktuell = foerste;
+		DobbelNode<T> aktuell = foerste.getNeste();
 
-		for (int i = 0; i < antall - 1; i++) {
+		for (int i = 0; i < antall - 1 && antall != 0; i++) {
 			if (aktuell.getElement().compareTo(el) == 0) {
 				return aktuell;
 			}
@@ -76,6 +75,14 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		}
 		return null;
 
+	}
+	
+	private boolean fins(T el) {
+		if (finn(el) == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
@@ -111,6 +118,21 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 
 		return resultat;
 
+	}
+	
+	public void visListe() {
+		
+		System.out.println("Innhold i liste:");
+		
+		DobbelNode<T> aktuell = foerste;
+		
+		while (aktuell != siste) {
+			
+			System.out.println(aktuell.getNeste().getElement());
+			aktuell = aktuell.getNeste();
+			
+		}
+		
 	}
 
 }
