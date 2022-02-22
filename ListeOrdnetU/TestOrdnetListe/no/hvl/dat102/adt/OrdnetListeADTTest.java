@@ -73,8 +73,18 @@ public abstract class OrdnetListeADTTest {
 	 */
 	@Test
 	public final void viseOrdnetIkkeAvtagende() {
-		// ... Fyll ut
-		// ... Legg til elementer og bruk fjernFoerste
+		liste.leggTil(e1);
+		liste.leggTil(e2);
+		liste.leggTil(e5);
+		liste.leggTil(e0);
+		liste.leggTil(e4);
+		liste.leggTil(e3);
+		assertEquals(e0, liste.fjernFoerste());
+		assertEquals(e1, liste.fjernFoerste());
+		assertEquals(e2, liste.fjernFoerste());
+		assertEquals(e3, liste.fjernFoerste());
+		assertEquals(e4, liste.fjernFoerste());
+		assertEquals(e5, liste.fjernFoerste());
 	}
 
 	@Test
