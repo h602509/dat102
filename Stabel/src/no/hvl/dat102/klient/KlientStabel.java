@@ -10,7 +10,7 @@ public class KlientStabel {
 
 		String str = "netsket re etteD";
 		int lengde = str.length();
-		StabelADT<Character> tegnStabel = new KjedetStabel<Character>();
+		StabelADT<Character> tegnStabel = new KjedetStabel<>();
 		for (int i = 0; i < lengde; i++) {
 			tegnStabel.push((str.charAt(i)));
 		}
