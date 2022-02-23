@@ -5,8 +5,8 @@ import no.hvl.dat102.exceptions.EmptyCollectionException;
 
 public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeADT<T> {
 
-	private final static int STDK = 100;
-	private final static int IKKE_FUNNET = -1;
+	private static final int STDK = 100;
+	private static final int IKKE_FUNNET = -1;
 	private int bak;
 	private T[] liste;
 
@@ -24,8 +24,9 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
-		// ... Fyll ut
+		T resultat = liste[bak - 1];
+		liste[bak - 1] = null;
+		bak--;
 		return resultat;
 	}
 
@@ -34,8 +35,13 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
-		// ... Fyll ut
+		T resultat = liste[0];
+
+		for (int i = 1; i < bak; i++) {
+			liste[i - 1] = liste[i];
+		}
+		liste[bak-1] = null;
+		bak--;
 		return resultat;
 	}
 
@@ -44,19 +50,16 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = liste[0];
-		return resultat;
+		return liste[0];
 	}
 
 	@Override
 	public T siste() {
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-		
-		T resultat = null;
-		// ...Fyll ut
 
-		return resultat;
+		return liste[bak - 1];
+
 	}
 
 	@Override
@@ -72,7 +75,27 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public void leggTil(T element) {
 
-		// ...Fyll ut
+		if (antall() == liste.length) {
+			utvid();
+		}
+
+		if (erTom()) {
+			liste[0] = element;
+			bak++;
+
+		} else {
+
+			int plassering = 0;
+			while (plassering < bak && liste[plassering].compareTo(element) < 0) {
+				plassering++;
+			}
+
+			for (int i = bak - 1; i >= plassering; i--) {
+				liste[i + 1] = liste[i];
+			}
+			liste[plassering] = element;
+			bak++;
+		}
 	}
 
 	@Override
@@ -83,26 +106,29 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public T fjern(T element) {
 		int plassering = finn(element);
-		T resultat = liste[finn(element)];
-		
-		for (int i = bak; i > plassering; i--) {
-			liste[i-1] = liste[i];
+		T resultat = liste[plassering];
+
+		for (int i = plassering; i < bak; i++) {
+			liste[i] = liste[i + 1];
 		}
-		liste[bak] = null;
+		liste[bak - 1] = null;
 		bak--;
 		return resultat;
-		
+
 	}
 
 	private int finn(T el) {
 		int i = 0, resultat = IKKE_FUNNET;
-		
-		while (resultat == IKKE_FUNNET && i <= bak) {
+
+		while (resultat == IKKE_FUNNET && i < bak) {
 			if (liste[i].compareTo(el) == 0) {
 				resultat = i;
+
 			}
+			i++;
+
 		}
-		
+
 		return resultat;
 	}
 

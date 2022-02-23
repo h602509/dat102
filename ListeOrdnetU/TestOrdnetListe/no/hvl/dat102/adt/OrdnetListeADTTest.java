@@ -39,7 +39,7 @@ public abstract class OrdnetListeADTTest {
 	public final void setup() {
 		liste = reset();
 	}
-
+	
 	/**
 	 * Tester om en ny liste er tom.
 	 */
