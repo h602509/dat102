@@ -80,7 +80,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			resultat = start.getElement();
 			start = start.getNeste();
 			antall--;
-		} else {// Gjennomgår den kjedete strukturen
+		} else {// Gjennomgï¿½r den kjedete strukturen
 			forgjenger = start;
 			aktuell = start.getNeste();
 			for (int sok = 2; sok <= antall && !funnet; sok++) {
@@ -115,8 +115,8 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return funnet;
 	}
 	/*
-	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
-	 * overkjører hashcode-metoden da en del biblioteker bruker hascode sammen med
+	 * Nï¿½r vi overkjï¿½rer (override) equals- meteoden er det anbefalt at vi ogsï¿½
+	 * overkjï¿½rer hashcode-metoden da en del biblioteker bruker hascode sammen med
 	 * equals. Vi kommer tilbake til forklaring og bruk av hashcode senere i faget.
 	 */
 
@@ -170,7 +170,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		
+
 		MengdeADT<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
 		T element = null;
@@ -193,35 +193,50 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
-		// TODO
-		MengdeADT<T> snittM = new KjedetMengde<T>();
+
+		MengdeADT<T> snittM = new KjedetMengde<>();
 		T element;
-		/*
-		 * ..
-		 * 
-		 * if (this.inneholder(element)) ((KjedetMengde<T>) snittM).settInn(element);
-		 */
+
+		Iterator<T> teller = this.iterator();
+		while (teller.hasNext()) {
+			element = teller.next();
+			if (m2.inneholder(element)) {
+				((KjedetMengde<T>) snittM).settInn(element);
+			}
+
+		}
 		return snittM;
 	}
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
-		// TODO
-		MengdeADT<T> differensM = new KjedetMengde<T>();
-		T element;
-		/*
-		 * Fyll ut
-		 * 
-		 */
 
+		MengdeADT<T> differensM = new KjedetMengde<>();
+
+		Iterator<T> teller = this.iterator();
+		while (teller.hasNext()) {
+			T element = teller.next();
+			if (!m2.inneholder(element)) {
+				((KjedetMengde<T>) differensM).settInn(element);
+			}
+
+		}
 		return differensM;
+
 	}
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
-		// TODO
+
 		boolean erUnderMengde = true;
-		// ...
+
+		Iterator<T> teller = this.iterator();
+		while (teller.hasNext()) {
+			T element = teller.next();
+			if (!m2.inneholder(element)) {
+				erUnderMengde = false;
+			}
+		}
 		return erUnderMengde;
 	}
 

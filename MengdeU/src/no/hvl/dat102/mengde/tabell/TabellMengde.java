@@ -78,7 +78,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public T fjern(T element) {
 	
-		// Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
+		// Sï¿½ker etter og fjerner element. Returnerer null-ref ved ikke-funn
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -110,8 +110,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 	
 	/*
-	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
-	 * overkjører hascode-metoden da en del biblioterker burker hascode sammen med
+	 * Nï¿½r vi overkjï¿½rer (override) equals- meteoden er det anbefalt at vi ogsï¿½
+	 * overkjï¿½rer hascode-metoden da en del biblioterker burker hascode sammen med
 	 * equals. Vi kommer tilbake til forklaring og bruk av hascode senere i faget.
 	 */
 	@Override
@@ -125,14 +125,21 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean equals(Object m2) {
-		//TODO
-		boolean likeMengder = true;
-		T element;
 
-		/*
-		 * ...
-		 */
-		return likeMengder;
+		if (this.antall() != ((MengdeADT<T>) m2).antall()) {
+			return false;
+		}
+		
+		T element;
+		Iterator<T> teller = this.iterator();
+		
+		while (teller.hasNext()) {
+			element = teller.next();
+			if (!((MengdeADT<T>) m2).inneholder(element)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	
