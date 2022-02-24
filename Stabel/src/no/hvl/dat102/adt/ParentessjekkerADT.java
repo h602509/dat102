@@ -36,4 +36,5 @@ ser bort
 * @return true dersom parentesene i strengen er balansert, false ellers. */
                                             
 boolean erBalansert(String s);
+	
 }
