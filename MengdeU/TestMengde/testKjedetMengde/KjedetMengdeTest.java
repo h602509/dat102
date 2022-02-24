@@ -6,7 +6,6 @@ import testMengdeATD.MengdeADTTest;
 
 public class KjedetMengdeTest extends MengdeADTTest {
 
-	
 	   @Override
 		protected MengdeADT<String> reset() {
 		return new KjedetMengde<String>();

@@ -98,4 +98,23 @@ public abstract class MengdeADTTest {
 		
 	}
 	
+	@Test
+	public final void testUndermengde() {
+		
+		mengde1.leggTil(a);
+		mengde1.leggTil(b);
+		mengde1.leggTil(c);
+		mengde2.leggTil(c);
+		mengde2.leggTil(d);
+		
+		assertFalse(mengde1.undermengde(mengde2));
+		
+		mengde2.leggTil(a);
+		mengde2.leggTil(b);
+		
+		assertTrue(mengde1.undermengde(mengde2));
+
+		
+	}
+	
 }

@@ -8,7 +8,7 @@ public class KlientParentesSjekker {
 	public static void main(String[] args) {
 		
 		ParentessjekkerADT objekt = new Parentessjekker();
-		String s = "av(fdgg)(sgsg(sd(sdgsd)(sdgsg)sgd)(sdg)dggsd";
+		String s = "(fngfg(fgnf{fgn}[fdthdfgndf]fgn)fgnffre g)   derhdsdhjs";
 		System.out.println(objekt.erBalansert(s));
 		
 	}
