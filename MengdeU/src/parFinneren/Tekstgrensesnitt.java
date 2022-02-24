@@ -22,4 +22,4 @@ public class Tekstgrensesnitt {
 		 * par funnet: 12
 		 */
 	}
-}∑
+}
