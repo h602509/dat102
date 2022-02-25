@@ -4,10 +4,10 @@ public class Tekstgrensesnitt {
 	// Hvis du vil lage meny, kan du også legge det inn i Tekstgrensesnitt
 	// leser opplysningene om et medlem fra tastatur
 
-	public static Medlem lesMedlem() {
-
-		// f.eks. bruke Scanner.
-	}
+//	public static Medlem lesMedlem() {
+//
+//		// f.eks. bruke Scanner.
+//	}
 
 	// Skriver ut hobbylisten for et medlem
 	public static void skrivHobbyListe(Medlem medlem) {
@@ -40,7 +40,6 @@ public class Tekstgrensesnitt {
 				for (int j = 0; j < medlemsIndeks.length; j++) {
 					if (i == medlemsIndeks[j]) {
 						erPrintet = true;
-
 					}
 				}
 				if (!erPrintet) {
@@ -48,7 +47,6 @@ public class Tekstgrensesnitt {
 					System.out.println(
 					medlem.getNavn() + " og " + arkiv.getMedlemFromIndeks(medlem.getStatusIndeks()).getNavn());
 					medlemsIndeks[i] = medlem.getStatusIndeks();
-
 				}
 			}
 		}
