@@ -1,6 +1,7 @@
 package parFinneren;
 
 import no.hvl.dat102.mengde.adt.MengdeADT;
+import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 
 public class Medlem {
 
@@ -9,10 +10,10 @@ public class Medlem {
     private int statusIndeks;
     
     
-    public Medlem(String navn, int statusIndeks, MengdeADT <Hobby> hobbyer) {
+    public Medlem(String navn) {
     	this.navn = navn;
-    	this.statusIndeks = statusIndeks;
-    	this.hobbyer = hobbyer;
+    	statusIndeks = -1;
+    	hobbyer = new KjedetMengde<>();
     	
     }
 
@@ -31,12 +32,10 @@ public class Medlem {
 		return hobbyer;
 	}
 
-
-	public void setHobbyer(MengdeADT<Hobby> hobbyer) {
-		this.hobbyer = hobbyer;
+	public void leggTilHobby(Hobby...hobbies) {
+		for(Hobby h : hobbies) hobbyer.leggTil(h);
 	}
-
-
+	
 	public int getStatusIndeks() {
 		return statusIndeks;
 	}
@@ -48,6 +47,12 @@ public class Medlem {
     
     public boolean passerTil (Medlem medlem2) {
     	return (this.getHobbyer().equals(medlem2.getHobbyer()));
+    }
+  
+    @Override
+    public String toString() {
+    	return "Medlemnr: " + statusIndeks + ", navn: " + navn + ", hobbyer: " + "<" + hobbyer.toString() + ">";
+    	
     }
     
 }

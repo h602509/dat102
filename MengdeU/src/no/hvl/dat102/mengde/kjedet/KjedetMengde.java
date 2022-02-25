@@ -21,7 +21,11 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		antall = 0;
 		start = null;
 	}//
-
+	
+	public T getFoerste() {
+		return (T) start;
+	}
+	
 	@Override
 	public void leggTil(T element) {
 		if (!(inneholder(element))) {
@@ -257,8 +261,11 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		LinearNode<T> aktuell = start; 
 		
 		while(aktuell != null){
-			resultat += aktuell.getElement().toString() + "\t"; 
+			resultat += aktuell.getElement().toString(); 
 			aktuell = aktuell.getNeste();
+			if (aktuell != null) {
+				resultat = resultat + ", ";
+			}
 		     }
 		return resultat; 
 		}
