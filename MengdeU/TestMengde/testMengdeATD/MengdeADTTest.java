@@ -54,12 +54,30 @@ public abstract class MengdeADTTest {
 		mengde2.leggTil(c);
 		mengde2.leggTil(d);
 		
-		assertEquals(mengde1.union(mengde2).antall(), 4);
+		assertEquals(4, mengde1.union(mengde2).antall());
 		assertTrue(mengde1.union(mengde2).inneholder(a));
 		assertTrue(mengde1.union(mengde2).inneholder(b));
 		assertTrue(mengde1.union(mengde2).inneholder(c));
 		assertTrue(mengde1.union(mengde2).inneholder(d));
 		assertFalse(mengde1.union(mengde2).inneholder(e));
+		
+	}
+	
+	@Test
+	public final void testUnionMedDisjunkt() {
+		
+		mengde1.leggTil(a);
+		mengde1.leggTil(b);
+		mengde1.leggTil(c);
+		mengde2.leggTil(d);
+		mengde2.leggTil(e);
+		
+		assertEquals(5, mengde1.union(mengde2).antall());
+		assertTrue(mengde1.union(mengde2).inneholder(a));
+		assertTrue(mengde1.union(mengde2).inneholder(b));
+		assertTrue(mengde1.union(mengde2).inneholder(c));
+		assertTrue(mengde1.union(mengde2).inneholder(d));
+		assertTrue(mengde1.union(mengde2).inneholder(e));
 		
 	}
 	
@@ -78,7 +96,21 @@ public abstract class MengdeADTTest {
 		assertTrue(mengde1.snitt(mengde2).inneholder(c));
 		assertFalse(mengde1.snitt(mengde2).inneholder(d));
 		assertFalse(mengde1.snitt(mengde2).inneholder(e));
+
 	}
+	
+	@Test
+	public final void testSnittDisjunkt() {
+		
+		mengde1.leggTil(a);
+		mengde1.leggTil(b);
+		mengde1.leggTil(c);
+		mengde2.leggTil(d);
+		mengde2.leggTil(e);
+		
+		assertTrue(mengde1.snitt(mengde2).erTom());
+	}
+	
 	
 	@Test
 	public final void testDifferanse() {
@@ -99,6 +131,19 @@ public abstract class MengdeADTTest {
 	}
 	
 	@Test
+	public final void testDifferanseDisjunkt() {
+		
+		mengde1.leggTil(a);
+		mengde1.leggTil(b);
+		mengde1.leggTil(c);
+		mengde2.leggTil(d);
+		mengde2.leggTil(e);
+		
+		assertTrue(mengde1.snitt(mengde2).erTom());
+
+	}
+	
+	@Test
 	public final void testUndermengde() {
 		
 		mengde1.leggTil(a);
@@ -113,6 +158,21 @@ public abstract class MengdeADTTest {
 		mengde2.leggTil(b);
 		
 		assertTrue(mengde1.undermengde(mengde2));
+
+		
+	}
+	
+	@Test
+	public final void testUndermengdeDisjunkt() {
+		
+		mengde1.leggTil(a);
+		mengde1.leggTil(b);
+		mengde1.leggTil(c);
+		mengde2.leggTil(d);
+		mengde2.leggTil(e);
+		
+		assertFalse(mengde1.undermengde(mengde2));
+
 
 		
 	}
